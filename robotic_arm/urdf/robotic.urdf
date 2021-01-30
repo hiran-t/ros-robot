@@ -1,0 +1,176 @@
+<?xml version="1.0"?>
+<!-- roslaunch urdf_tutorial display.launch model:='$(find robotic_arm)/urdf/robotic.urdf'-->
+
+<robot name="RTB">
+    <link name="World"/>
+    <!--BASE LINK-->
+        <link name="base_link">
+            <visual>
+                <geometry>
+                    <mesh filename="package://robotic_arm/stl/base_link.stl" scale="0.01 0.01 0.01" />
+                </geometry>
+
+                <material name="Black"/>
+                <origin xyz="-1.9 1.85 0.0" rpy="7.85 0 0"/>
+            </visual>
+ 
+            <collision>
+                <geometry>
+                    <mesh filename="package://robotic_arm/stl/base_link.stl" scale="0.01 0.01 0.01" />
+                </geometry>
+                <origin xyz="-1.9 1.85 0.0" rpy="7.85 0 0"/>
+            </collision>
+            <inertial>
+                <mass value="1"/>
+                <origin xyz="-1.9 1.85 0.0" rpy="7.85 0 0"/>
+                <inertia ixx="0.0" izz="0.0" iyy="0.0" ixy="0.0" ixz="0.0"  iyz="0.0" /> 
+                
+            </inertial>
+        </link>
+ 
+            <joint name="base_link" type="fixed">
+                <parent link="World"/>
+                <child link="base_link"/>
+            </joint>
+     <!--ONE LINK-->
+        <link name="One">
+            <visual>
+                <geometry>
+                    <mesh filename="package://robotic_arm/stl/link1.stl" scale="0.01 0.01 0.01" />
+                </geometry>
+
+                <material name="Silver">
+                <color rgba ="0.75 0.75 0.75 1.0"/>
+                </material>
+                <!-- Its the relation between joint and the body in distance -->
+
+                <origin xyz="-1.95 -1.98 0" rpy="7.85 0 7.85"/>
+            </visual>
+ 
+            <collision>
+                <geometry>
+                    <mesh filename="package://robotic_arm/stl/link1.stl" scale="0.01 0.01 0.01" />
+                </geometry>
+                <origin xyz="-1.95 -1.98 0" rpy="7.85 0 7.85"/>
+            </collision>
+            <inertial>
+                <mass value="1"/>
+                <origin xyz="-1.95 -1.98 0" rpy="7.85 0 7.85"/>
+                <inertia ixx="0.0" izz="0.0" iyy="0.0" ixy="0.0" ixz="0.0"  iyz="0.0" /> 
+            </inertial>
+        </link>
+ 
+            <joint name="One" type="revolute">
+                <parent link="base_link" />
+                <child link="One" />
+                <limit effort="30" velocity="1.0" lower="-3.14" upper="3.14" />
+                <origin xyz="0 0 1.79" rpy="0 0 0" />
+                <axis xyz="0 0 1" />
+            </joint>   
+
+<!--Two LINK -->
+        <link name="Two">
+            <visual>
+                <geometry>
+                    <mesh filename="package://robotic_arm/stl/link2.stl" scale="0.01 0.01 0.01" />
+                </geometry>
+
+                <material name="Silver">
+                <color rgba ="0.75 0.75 0.75 1.0"/>
+                </material>
+                <origin xyz="-0.5 0.5 -0.56" rpy="7.85 0.0 0"/>
+                <!-- Its the relation between joint and the body in distance -->
+            </visual>
+ 
+            <collision>
+                <geometry>
+                    <mesh filename="package://robotic_arm/stl/link2.stl" scale="0.01 0.01 0.01" />
+                </geometry>
+                <origin xyz="-0.5 0.5 -0.56" rpy="7.85 0.0 0"/>
+            </collision>
+            <inertial>
+                <mass value="1"/>
+                <origin xyz="-0.5 0.5 -0.56" rpy="7.85 0.0 0"/> 
+                <inertia ixx="0.0" izz="0.0" iyy="0.0" ixy="0.0" ixz="0.0"  iyz="0.0" /> 
+            </inertial>
+        </link>
+ 
+        <joint name="Two" type="revolute">
+            <parent link="One" />
+            <child link="Two" />
+            <limit effort="30" velocity="1.0" lower="-3.14" upper="3.14" />
+            <origin xyz="0 0 1.2" rpy="0 0 0" />
+            <axis xyz="0 1 0" />
+        </joint>
+
+     <!--Three LINK-->
+        <link name="Three">
+            <visual>
+                <geometry>
+                    <mesh filename="package://robotic_arm/stl/link3.stl" scale="0.01 0.01 0.01" />
+                </geometry>
+
+                <material name="Silver">
+                <color rgba ="0.75 0.75 0.75 1.0"/>
+                </material>
+                <origin xyz="-0.4 0.505 -0.38" rpy="7.85 0 0"/>
+                <!-- Its the relation between joint and the body in distance -->
+            </visual>
+ 
+            <collision>
+                <geometry>
+                    <mesh filename="package://robotic_arm/stl/link3.stl" scale="0.01 0.01 0.01" />
+                </geometry>
+                <origin xyz="-0.4 0.505 -0.38" rpy="7.85 0 0"/>
+            </collision>
+            <inertial>
+                <mass value="1"/>
+                <origin xyz="-0.4 0.505 -0.38" rpy="7.85 0 0"/> 
+                <inertia ixx="0.0" izz="0.0" iyy="0.0" ixy="0.0" ixz="0.0"  iyz="0.0" /> 
+            </inertial>
+    </link>
+ 
+        <joint name="Three" type="revolute">
+            <parent link="Two" />
+            <child link="Three" />
+            <limit effort="30" velocity="1.0" lower="-3.14" upper="3.14" />
+            <origin xyz="0 0 1.8" rpy="0 0 0" />
+            <axis xyz="0 1 0" />
+        </joint>
+
+     <!--Griper LINK-->
+        <link name="Griper">
+            <visual>
+                <geometry>
+                    <cylinder radius ="0.1" length="0.1" />
+                </geometry>
+
+                <material name="Silver">
+                <color rgba ="0.75 0.75 0.75 1.0"/>
+                </material>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <!-- Its the relation between joint and the body in distance -->
+            </visual>
+ 
+            <collision>
+                <geometry>
+                    <cylinder radius ="0.01" length="0.01" />
+                </geometry>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+            </collision>
+            <inertial>
+                <mass value="1"/>
+                <origin xyz="0 0 0" rpy="0 0 0"/> 
+                <inertia ixx="0.0" izz="0.0" iyy="0.0" ixy="0.0" ixz="0.0"  iyz="0.0" /> 
+            </inertial>
+    </link> 
+ 
+        <joint name="Griper" type="revolute">
+            <parent link="Three" />
+            <child link="Griper" />
+            <limit effort="30" velocity="1.0" lower="-3.14" upper="3.14" />
+            <origin xyz="-0.05 0 2.3" rpy="0 0 0" />
+            <axis xyz="0 1 0" />
+        </joint>   
+
+</robot>
