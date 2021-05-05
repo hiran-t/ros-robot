@@ -1,0 +1,102 @@
+
+<FloatLayout>:
+    orientation: 'vertical'
+    myslider: slider
+
+    Slider:
+        id: slider
+        min: -180
+        max: 180
+        value: 0
+        hint: True
+        size_hint: 0.3, 0.3
+        pos_hint: {"center_x": 0.15, "center_y": 0.9}
+        on_value_normalized: app.slider_function_link1([0,self.value])
+        
+    Label
+        text: ''
+        text: 'JOINT OF DEGREE LINK1: {}'.format(int(slider.value))
+        halign: "center"
+        size_hint: 1, 1
+        pos_hint: {"center_x": 0.15, "center_y": 0.85}
+
+    Slider:
+        id: slider_l
+        min: -180
+        max: 180
+        value: 0
+        hint: True
+        size_hint: 0.3, 0.3
+        pos_hint: {"center_x": 0.5, "center_y": 0.9}
+        on_value_normalized: app.slider_function_link1([1,self.value])
+    Label
+        text: ''
+        text: 'JOINT OF DEGREE LINK2: {}'.format(int(slider_l.value))
+        halign: "center"
+        size_hint: 1, 1
+        pos_hint: {"center_x": 0.5, "center_y": 0.85}
+
+    Slider:
+        id: slider_u
+        min: -180
+        max: 180
+        value: 90
+        hint: True
+        size_hint: 0.3, 0.3
+        pos_hint: {"center_x": 0.85, "center_y": 0.9}
+        on_value_normalized: app.slider_function_link1([2,self.value])
+    Label
+        text: ''
+        text: 'JOINT OF DEGREE LINK3: {}'.format(int(slider_u.value))
+        halign: "center"
+        size_hint: 1, 1
+        pos_hint: {"center_x": 0.85, "center_y": 0.85}
+
+    Slider:
+        id: slider_r
+        min: -180
+        max: 180
+        value: 0
+        hint: True
+        size_hint: 0.3, 0.3
+        pos_hint: {"center_x": 0.15, "center_y": 0.1}
+        on_value_normalized: app.slider_function_link1([3,self.value])
+        
+    Label
+        text: ''
+        text: 'JOINT OF DEGREE LINK4: {}'.format(int(slider_r.value))
+        halign: "center"
+        size_hint: 1, 1
+        pos_hint: {"center_x": 0.15, "center_y": 0.05}
+
+    Slider:
+        id: slider_b
+        min: -180
+        max: 180
+        value: -90
+        hint: True
+        size_hint: 0.3, 0.3
+        pos_hint: {"center_x": 0.50, "center_y": 0.1}
+        on_value_normalized: app.slider_function_link1([4,self.value])
+    Label
+        text: ''
+        text: 'JOINT OF DEGREE LINK5: {}'.format(int(slider_b.value))
+        halign: "center"
+        size_hint: 1, 1
+        pos_hint: {"center_x": 0.5, "center_y": 0.05}
+
+    Slider:
+        id: slider_t
+        min: -180
+        max: 180
+        value: 0
+        hint: True
+        size_hint: 0.3, 0.3
+        pos_hint: {"center_x": 0.85, "center_y": 0.1}
+        on_value_normalized: app.slider_function_link1([5,self.value])
+    Label
+        text: ''
+        text: 'JOINT OF DEGREE LINK6: {}'.format(int(slider_t.value))
+        halign: "center"
+        size_hint: 1, 1
+        pos_hint: {"center_x": 0.85, "center_y": 0.05}

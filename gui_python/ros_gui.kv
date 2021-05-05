@@ -1,0 +1,108 @@
+<FloatLayout>:
+    
+    MDLabel:
+        id: my_label
+        text: "GUI YASKAWA ROBOT"
+        halign: "center"
+        size_hint: 1, 1
+        pos_hint: {"center_x": .11, "center_y": .98}
+
+  
+    MDSlider:
+        id: my_slider1
+        min: -180
+        max: 180
+        value: 0
+        hint: True
+        size_hint: 0.3, 0.3
+        pos_hint: {"center_x": 0.15, "center_y": 0.2}
+        on_value_normalized: app.slider_function(self.value)
+
+    MDLabel:       
+        text: 'JOINT OF DEGREE LINK1: %s' % int(my_slider1.value)
+        halign: "center"
+        size_hint: 1, 1
+        pos_hint: {"center_x": 0.15, "center_y": 0.15}
+
+  
+    # MDSlider:
+
+    #     id: my_slider2
+    #     min: -360
+    #     max: 360
+    #     value: 0
+    #     hint: True
+    #     size_hint: 0.3, 0.3
+    #     pos_hint: {"center_x": 0.50, "center_y": 0.2}
+    #     on_touch_move: app.slider_function(self.value)    
+
+                    
+    # MDLabel:       
+    #     text: 'JOINT OF DEGREE LINK2: %s' % int(my_slider2.value)
+    #     halign: "center"
+    #     size_hint: 1, 1
+    #     pos_hint: {"center_x": 0.50, "center_y": 0.15}
+
+   
+    # MDSlider:
+    #     id: my_slider3
+    #     min: -360
+    #     max: 360
+    #     value: 0
+    #     hint: True
+    #     size_hint: 0.3, 0.3
+    #     pos_hint: {"center_x": 0.85, "center_y": 0.2}
+    #     on_touch_move: app.slider_function(self.value)
+    # MDLabel:       
+    #     text: 'JOINT OF DEGREE LINK3: %s' % int(my_slider3.value)
+    #     halign: "center"
+    #     size_hint: 1, 1
+    #     pos_hint: {"center_x": 0.85, "center_y": 0.15}
+  
+  
+    # MDSlider:
+    #     id: my_slider4
+    #     min: -360
+    #     max: 360
+    #     value: app.
+    #     hint: True
+    #     size_hint: 0.3, 0.3
+    #     pos_hint: {"center_x": 0.15, "center_y": 0.1}
+    #     on_touch_move: app.slider_function(self.value)
+    # MDLabel:       
+    #     text: 'JOINT OF DEGREE LINK4: %s' % int(my_slider4.value)
+    #     halign: "center"
+    #     size_hint: 1, 1
+    #     pos_hint: {"center_x": 0.15, "center_y": 0.05}
+
+ 
+    # MDSlider:
+    #     id: my_slider5
+    #     min: -360
+    #     max: 360
+    #     value: 0
+    #     hint: True
+    #     size_hint: 0.3, 0.3
+    #     pos_hint: {"center_x": 0.50, "center_y": 0.1}
+    #     on_touch_move: app.slider_function(self.value)
+    # MDLabel:       
+    #     text: 'JOINT OF DEGREE LINK5: %s' % int(my_slider5.value)
+    #     halign: "center"
+    #     size_hint: 1, 1
+    #     pos_hint: {"center_x": 0.50, "center_y": 0.05}
+
+
+    # MDSlider:
+    #     id: my_slider6
+    #     min: -360
+    #     max: 360
+    #     value: 0
+    #     hint: True
+    #     size_hint: 0.3, 0.3
+    #     pos_hint: {"center_x": 0.85, "center_y": 0.1}
+    #     on_touch_move: app.slider_function(self.value)
+    # MDLabel:       
+    #     text: 'JOINT OF DEGREE LINK6: %s' % int(my_slider6.value)
+    #     halign: "center"
+    #     size_hint: 1, 1
+    #     pos_hint: {"center_x": 0.85, "center_y": 0.05}
