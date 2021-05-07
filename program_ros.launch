@@ -1,0 +1,22 @@
+<launch>
+    <arg name="robot_ip" />
+    <arg name="controller"/>
+  
+    <rosparam command="load" file="$(find motoman_hc10_support)/config/joint_names_hc10.yaml" />
+    <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find motoman_hc10_support)/urdf/hc10.xacro'" />
+
+    <include file="$(find motoman_driver)/launch/robot_interface_streaming_$(arg controller).launch">
+      <arg name="robot_ip" value="$(arg robot_ip)" />
+    </include>
+    
+
+    <node name="robot_state_publisher" pkg="robot_state_publisher" 
+        type="robot_state_publisher" />
+
+    <include file="$(find motoman_hc10_support)/launch/load_hc10.launch" />
+    
+    <node pkg="rosservice" type="rosservice" name="robot_enable" args="call --wait /robot_enable" />
+   
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find industrial_robot_client)/config/robot_state_visualize.rviz" required="true" />
+    <node name="gui_yaskawa" pkg="motoman_driver" type="gui_yaskawa.py" />
+  </launch>
